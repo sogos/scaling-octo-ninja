@@ -1,0 +1,15 @@
+GER\Bundle\AmazonBundle\Entity\Domain:
+    type: entity
+    table: null
+    repositoryClass: GER\Bundle\AmazonBundle\Entity\DomainRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

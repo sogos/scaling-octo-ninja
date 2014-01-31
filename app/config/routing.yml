@@ -1,0 +1,4 @@
+ger_amazon:
+    resource: "@GERAmazonBundle/Resources/config/routing.yml"
+    prefix:   /
+

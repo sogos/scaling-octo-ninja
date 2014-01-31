@@ -1,0 +1,8 @@
+ger_amazon_domains:
+    pattern:  /domains
+    defaults: { _controller: GERAmazonBundle:Default:getDomains }
+
+ger_amazon_elastic_ips:
+    pattern:  /elastic_ips
+    defaults: { _controller: GERAmazonBundle:Default:getElasticIps }
+

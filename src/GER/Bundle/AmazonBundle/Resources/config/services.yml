@@ -1,0 +1,24 @@
+parameters:
+    ger_amazon.twig.extension.class: GER\Bundle\AmazonBundle\Twig\AmazonExtension
+    ger_amazon.aws.factory.provider.class: GER\Bundle\AmazonBundle\Provider\AmazonAwsFactoryProvider
+
+services:
+    ger_amazon.twig.amazon_extension:
+        class: %ger_amazon.twig.extension.class%
+        tags:
+            - { name: twig.extension }
+    twig.extension.text:
+       class: Twig_Extensions_Extension_Text
+       tags:
+            - { name: twig.extension }
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+    twig.extension.debug:
+        class: Twig_Extensions_Extension_Debug
+        tags:
+            - { name: twig.extension }
+    ger_amazon.aws.factory:
+        class: %ger_amazon.aws.factory.provider.class%
+        arguments: ['%aws_access_key_id%','%aws_access_key_secret%', '%aws_default_region%']

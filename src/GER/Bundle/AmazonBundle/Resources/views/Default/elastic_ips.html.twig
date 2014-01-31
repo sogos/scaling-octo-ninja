@@ -1,0 +1,30 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<table class='table table-hover table-stripped'>
+    <thead>
+        <th>#</th>
+        <th>Ip</th>
+        <th>AllocationId</th>
+        <th>Domain</th>
+        <th>Actions</th>
+    </thead>
+    <tbody>
+        <tr>
+            {% for key,address in addresses.Addresses %}
+            <td>{{key}}</td>
+            <td>{{ address.PublicIp }}</td>
+            <td>{{ address.AllocationId }}</td>
+            <td>{{ address.Domain }}</td>
+            <td>
+                <button class='btn btn-xs btn-success'><i class="fa fa-pencil-square-o"></i></button>
+                <button class='btn btn-xs btn-warning'><i class="fa fa-trash-o"></i></button>
+                {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button class="btn btn-info"> Ask New ElasticIP </button>
+{% endblock %}

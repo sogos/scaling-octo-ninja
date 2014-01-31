@@ -1,0 +1,59 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+{% for key, domain in domains %}
+<h3>{{ domain.generals.HostedZone.Name}} </h3>
+<table class="table table-stripped table-hover">
+	<thead>
+		<tr>
+			<th>#</th>
+			<th>Name</th>
+			<th>Type</th>
+			<th>TTL</th>
+			<th>Values</th>
+			<th>Actions</th>
+		</tr>	
+	</thead>
+	<tbody>
+		{% for record_key, record in domain.recordSets.ResourceRecordSets %}
+		<tr>
+			<td>{{ record_key }}</td>
+			<td>{{ record.Name|amazonRecordSet }}</td>
+
+			{% 	if record.Type == 'CNAME' %}
+			{% 	set label_class = 'label-success' %}
+			{% elseif record.Type == 'A' %}
+			{% 	set label_class = 'label-warning' %}
+			{% 	else %}
+			{% 	set label_class = 'label-default' %}
+			{% endif %}
+			<td><span class="label {{ label_class }}">{{ record.Type }}</span></td>
+			<td>{{ record.TTL/60 }} m</td>
+			<td>
+				<div class='well well-sm'>
+					<ul>
+
+						{% for key_recordsets,recordsets in record.ResourceRecords %}
+						<li>{{ recordsets.Value|truncate(40,'') }}</li>
+						{% endfor %}
+
+					</ul>
+				</div>
+			</td>
+			<td>
+
+				{% if record.Type == 'CNAME' or record.Type == 'A'  %}
+				<button class='btn btn-xs btn-success'><i class="fa fa-pencil-square-o"></i></button>
+				<button class='btn btn-xs btn-warning'><i class="fa fa-trash-o"></i></button>
+				{% endif %}
+			</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+
+{% endfor %}
+
+{% endblock %}
