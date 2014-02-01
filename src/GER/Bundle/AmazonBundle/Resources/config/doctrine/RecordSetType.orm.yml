@@ -1,7 +1,7 @@
-GER\Bundle\AmazonBundle\Entity\Domain:
+GER\Bundle\AmazonBundle\Entity\RecordSetType:
     type: entity
-    table: domains
-    repositoryClass: GER\Bundle\AmazonBundle\Entity\DomainRepository
+    table: domains_recordset_types
+    repositoryClass: GER\Bundle\AmazonBundle\Entity\RecordSetTypeRepository
     id:
         id:
             type: integer

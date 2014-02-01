@@ -1,7 +1,7 @@
-GER\Bundle\AmazonBundle\Entity\Domain:
+GER\Bundle\AmazonBundle\Entity\RecordSet:
     type: entity
-    table: domains
-    repositoryClass: GER\Bundle\AmazonBundle\Entity\DomainRepository
+    table: domains_recordsets
+    repositoryClass: GER\Bundle\AmazonBundle\Entity\RecordSetRepository
     id:
         id:
             type: integer
@@ -9,7 +9,11 @@ GER\Bundle\AmazonBundle\Entity\Domain:
             generator:
                 strategy: AUTO
     fields:
+        ttl:
+            type: integer
         name:
             type: string
             length: 255
+        value:
+            type: text
     lifecycleCallbacks: {  }
